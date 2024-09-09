@@ -13,5 +13,6 @@ print(2 * 2 + 2 == 2 * (2 + 2))
 #4th program
 
 line=123.456
-line=line * 10 - 1230
-print(int(line))
+line=(int(line * 10)) % 10
+print(line)
+
