@@ -1,4 +1,3 @@
-
 my_dict = {'x': 10, 'y': 20, 'z': True}
 print(my_dict)
 
