@@ -9,6 +9,7 @@ print(my_dict.pop('z'))
 print(my_dict)
 
 my_set = {1, 3 , 3, False, 'Aye', 1}
+my_set.update({12, 'Kanagroo'})
 print(my_set)
 
 my_set.discard(3)
