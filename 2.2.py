@@ -1,6 +1,6 @@
-first = input('First:')
-second = input('Second:')
-third = input('Third:')
+first = int(input('First:'))
+second = int(input('Second:'))
+third = int(input('Third:'))
 
 if first == second == third:
     print(3)
