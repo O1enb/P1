@@ -1,6 +1,6 @@
 def get_matrix (n, m, value):
     matrix = []
-    if m == 0 or n == 0:
+    if m <= 0 or n <= 0:
         return matrix
     for x in range(n):
         row = [value] * m
