@@ -15,7 +15,7 @@ def calculate_average(numbers):
     try:
         true_len = 0
         for i in numbers:
-            if isinstance(i, int):
+            if isinstance(i, (int, float)):
                 true_len += 1
         return personal_sum(numbers)[0] / true_len
     except ZeroDivisionError:
