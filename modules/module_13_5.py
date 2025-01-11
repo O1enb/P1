@@ -8,11 +8,15 @@ import asyncio
 api = "api"
 bot = Bot(token = api)
 dp = Dispatcher(bot, storage = MemoryStorage())
-kb = ReplyKeyboardMarkup()
-button1 = KeyboardButton(text='Рассчитать')
-button2 = KeyboardButton(text='Информация')
-kb.add(button1)
-kb.add(button2)
+kb = ReplyKeyboardMarkup(
+    keyboard=[
+        [
+        KeyboardButton(text='Рассчитать'),
+        KeyboardButton(text='Информация')
+        ]
+    ],
+    resize_keyboard = True
+)
 
 
 class UserState(StatesGroup):
@@ -22,7 +26,7 @@ class UserState(StatesGroup):
 
 
 @dp.message_handler(text='Информация')
-async def set_age(message):
+async def info(message):
     await message.answer('Информация!')
 
 
@@ -40,14 +44,14 @@ async def set_growth(message, state):
 
 
 @dp.message_handler(state=UserState.growth)
-async def set_growth(message, state):
+async def set_weight(message, state):
     await state.update_data(growth=message.text)
     await message.answer('Введите свой вес.')
     await UserState.weight.set()
 
 
 @dp.message_handler(state=UserState.weight)
-async def set_growth(message, state):
+async def send_calories(message, state):
     await state.update_data(weight=message.text)
     data = await state.get_data()
     calories = int(data['weight']) * 10 + int(data['growth']) * 6.25 - int(data['age']) * 5 + 5
